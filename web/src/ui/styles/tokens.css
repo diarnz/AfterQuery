@@ -1,0 +1,124 @@
+/*
+ * "Lamp and Ledger" design tokens (frontend blueprint §5).
+ * Components use semantic tokens only. Contrast is checked by src/ui/tokens.test.ts.
+ */
+:root {
+  /* A terminal: one monospaced family everywhere. */
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --font-display: var(--font-mono);
+  --font-ui: var(--font-mono);
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.75rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --radius-sm: 0;
+  --radius-md: 0;
+
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-voyage: 600ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  --overlay-shadow: 0 8px 24px rgb(0 0 0 / 0.45);
+
+  /* Dark (default) */
+  color-scheme: dark;
+  --bg-canvas: #0e0d0b;
+  --bg-panel: #16140f;
+  --bg-raised: #1f1c16;
+  --bg-inset: #11100c;
+  --border-subtle: #2e2a22;
+  --border-strong: #4a4334;
+  --text-primary: #ece3ce;
+  --text-secondary: #b3a88f;
+  --text-muted: #8f8571;
+  --accent-brass: #c9a54a;
+  --accent-brass-strong: #e0bd62;
+  --on-brass: #17140b;
+  --map-ink: #c8bb98;
+  --map-water: #121a1e;
+  --map-grid: #1b2529;
+  --status-ok: #5fa894;
+  --status-error: #e0705a;
+  --status-notice: #7f9ce0;
+  --status-pending: #d6a04a;
+  --status-infra: #b199d8;
+  --seal: #b88a2e;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
+    --bg-canvas: #f4eedf;
+    --bg-panel: #fbf7ec;
+    --bg-raised: #ffffff;
+    --bg-inset: #efe7d3;
+    --border-subtle: #ddd3bc;
+    --border-strong: #b9ac8e;
+    --text-primary: #1e1a12;
+    --text-secondary: #554c3b;
+    --text-muted: #6e6552;
+    --accent-brass: #8c6a12;
+    --accent-brass-strong: #6f530b;
+    --on-brass: #ffffff;
+    --map-ink: #3b3222;
+    --map-water: #e5e7dd;
+    --map-grid: #d6d9cc;
+    --status-ok: #2a6a5a;
+    --status-error: #a3321f;
+    --status-notice: #2d4e9a;
+    --status-pending: #7f5410;
+    --status-infra: #5e3f8f;
+    --seal: #7a5410;
+    --overlay-shadow: 0 8px 24px rgb(60 40 10 / 0.18);
+  }
+}
+
+:root[data-theme='parchment'] {
+  color-scheme: light;
+  --bg-canvas: #f4eedf;
+  --bg-panel: #fbf7ec;
+  --bg-raised: #ffffff;
+  --bg-inset: #efe7d3;
+  --border-subtle: #ddd3bc;
+  --border-strong: #b9ac8e;
+  --text-primary: #1e1a12;
+  --text-secondary: #554c3b;
+  --text-muted: #6e6552;
+  --accent-brass: #8c6a12;
+  --accent-brass-strong: #6f530b;
+  --on-brass: #ffffff;
+  --map-ink: #3b3222;
+  --map-water: #e5e7dd;
+  --map-grid: #d6d9cc;
+  --status-ok: #2a6a5a;
+  --status-error: #a3321f;
+  --status-notice: #2d4e9a;
+  --status-pending: #7f5410;
+  --status-infra: #5e3f8f;
+  --seal: #7a5410;
+  --overlay-shadow: 0 8px 24px rgb(60 40 10 / 0.18);
+}
+
+:root.projector {
+  font-size: 125%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-base: 0ms;
+    --motion-voyage: 0ms;
+  }
+}

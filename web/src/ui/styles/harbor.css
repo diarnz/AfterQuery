@@ -1,0 +1,207 @@
+/* Engraved Harbor chart. Linework uses --map-ink; status uses the shared status tokens. */
+
+.harbor-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 62vh;
+  background-color: var(--map-water);
+  background-image:
+    linear-gradient(var(--map-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--map-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+}
+
+.harbor-map [role='button'] {
+  cursor: pointer;
+  outline: none;
+}
+
+.harbor-map [role='button']:focus-visible .dock-seal,
+.harbor-map [role='button']:focus-visible .route-line,
+.harbor-map [role='button']:focus-visible .hull {
+  stroke: var(--accent-brass-strong);
+  stroke-width: 3;
+}
+
+.compass circle {
+  fill: none;
+  stroke: var(--map-ink);
+  stroke-opacity: 0.5;
+}
+
+.compass path {
+  fill: var(--map-ink);
+  fill-opacity: 0.6;
+}
+
+.compass text {
+  fill: var(--map-ink);
+  font-family: var(--font-display);
+  font-size: 13px;
+}
+
+/* Routes */
+.route-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 18;
+}
+
+.route-line {
+  fill: none;
+  stroke: var(--map-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke var(--motion-fast) var(--ease-standard), stroke-width var(--motion-fast) var(--ease-standard);
+}
+
+.arrowhead {
+  fill: var(--map-ink);
+}
+
+.arrowhead-closed {
+  fill: var(--status-error);
+}
+
+.route.is-closed .route-line {
+  stroke: var(--status-error);
+  stroke-dasharray: 7 6;
+}
+
+.route.is-lit .route-line,
+.route-button[aria-pressed='true'] .route-line {
+  stroke: var(--accent-brass-strong);
+  stroke-width: 4;
+}
+
+.route-lock circle {
+  fill: var(--map-water);
+  stroke: var(--status-error);
+  stroke-width: 2;
+}
+
+.route-lock path {
+  stroke: var(--status-error);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.route-label {
+  fill: var(--text-secondary);
+  font-size: 11px;
+  paint-order: stroke;
+  stroke: var(--map-water);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.route-name {
+  fill: var(--text-primary);
+  font-weight: 500;
+}
+
+.route.is-closed .route-label {
+  fill: var(--status-error);
+}
+
+.route-notice {
+  fill: var(--status-notice);
+}
+
+/* Docks */
+.dock-seal {
+  fill: var(--bg-panel);
+  stroke: var(--map-ink);
+  stroke-width: 2;
+}
+
+.dock-seal-inner {
+  fill: none;
+  stroke: var(--map-ink);
+  stroke-opacity: 0.5;
+  stroke-dasharray: 2 3;
+}
+
+.dock-name {
+  fill: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.dock.is-lit .dock-seal,
+.dock [aria-pressed='true'] .dock-seal {
+  stroke: var(--accent-brass-strong);
+  stroke-width: 4;
+}
+
+.chip {
+  font-size: 11px;
+  paint-order: stroke;
+  stroke: var(--map-water);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.chip-lot { fill: var(--text-primary); }
+.chip-ok { fill: var(--status-ok); }
+.chip-notice { fill: var(--status-notice); }
+
+/* Vessels */
+.vessel-hit {
+  fill: transparent;
+}
+
+.hull {
+  fill: var(--accent-brass);
+  stroke: var(--map-ink);
+  stroke-width: 1;
+}
+
+.vessel-letter {
+  pointer-events: none;
+  fill: var(--on-brass);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.vessel-caption {
+  fill: var(--text-secondary);
+  font-size: 10px;
+  paint-order: stroke;
+  stroke: var(--map-water);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.vessel.is-lit .hull,
+.vessel-button[aria-pressed='true'] .hull {
+  fill: var(--accent-brass-strong);
+  stroke: var(--text-primary);
+  stroke-width: 2;
+}
+
+.vessel-moving {
+  transition: transform var(--motion-voyage) var(--ease-standard);
+}
+
+.vessel-moving .hull {
+  fill: var(--status-pending);
+}
+
+.vessel-moving .vessel-caption {
+  fill: var(--status-pending);
+}
+
+@media (max-width: 599px) {
+  .route-label,
+  .vessel-caption,
+  .chip {
+    font-size: 13px;
+  }
+}
